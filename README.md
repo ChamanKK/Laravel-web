@@ -1,4 +1,4 @@
-# CHT2520 Assignment 1 U2390634 Chaman Karim Kousar
+# CHT2520 Assignment 2 U2390634 Chaman Karim Kousar
 
 # Plants Management Application 
 
