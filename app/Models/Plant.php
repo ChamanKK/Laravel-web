@@ -11,5 +11,18 @@ class Plant extends Model
         'date_planted',
         'type',
         'watering_frequency',
+        'category_id',
     ];
+
+    public function category() {
+        return $this->belongsTo(Category::class);
+    }
+
+    public function maintenances() {
+        return $this->hasMany(Maintenance::class);
+    }
+
+    public function journals() {
+        return $this->hasMany(Journal::class);
+    }
 }

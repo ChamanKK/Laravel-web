@@ -14,6 +14,9 @@ return new class extends Migration
             $table->string('type');
             $table->date('date_planted')->nullable();
             $table->string('watering_frequency')->nullable();
+
+            $table->foreignId('category_id')->nullable()->constrained()->onDelete('set null');
+
             $table->timestamps();
         });
     }

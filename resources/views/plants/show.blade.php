@@ -4,15 +4,16 @@
     <p>Type: {{$plant->type}}</p>
     <p>Watering Frequency: {{$plant->watering_frequency}}</p>
 
-
-    <a href='/plants/{{$plant->id}}/edit'>
-       <button type="submit" class="edit-button">Edit</button>
+    @can('edit')
+    <a href="/plants/{{$plant->id}}/edit">
+        <button type="button" class="edit-button">Edit</button>
     </a>
 
-    <form method='POST' action='/plants'>
+    <form method="POST" action="/plants/{{$plant->id}}">
         @csrf
         @method('DELETE')
-        <input type="hidden" name="id" value="{{$plant->id}}">
-        <button type='submit'>Delete</button>
+        <button type="submit">Delete</button>
     </form>
+    @endcan
+
 </x-layout>

@@ -95,5 +95,4 @@ class PlantController extends Controller
 
         return view('plants.index', ['plants' => $plants]);
     }
-
 }

@@ -1,16 +1,20 @@
 <?php
 
-use App\Http\Controllers\FilmController;
 use App\Http\Controllers\PlantController;
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/plants', [PlantController::class, 'index']);
-Route::get('/plants/create', [PlantController::class, 'create']);
+Route::get('/plants/create', [PlantController::class, 'create'])->middleware('auth', 'can:edit');
 Route::get('/plants/about', [PlantController::class, 'about']);
-Route::post('/plants', [PlantController::class, 'store']);
+Route::post('/plants', [PlantController::class, 'store'])->middleware('auth', 'can:edit');
 Route::get('/plants/search', [PlantController::class, 'search']);
-Route::get('/plants/{id}', [PlantController::class, 'show']);
-Route::get('/plants/{id}/edit', [PlantController::class, 'edit']);
-Route::patch('/plants', [PlantController::class, 'update']);
-Route::delete('/plants', [PlantController::class, 'destroy']);
+Route::get('/plants/{id}', [PlantController::class, 'show'])->middleware('auth');
+Route::get('/plants/{id}/edit', [PlantController::class, 'edit'])->middleware('auth', 'can:edit');
+Route::patch('/plants/{id}', [PlantController::class, 'update'])->middleware('auth', 'can:edit');
+Route::delete('/plants/{id}', [PlantController::class, 'destroy'])->middleware('auth', 'can:edit');
 
+
+Route::get('/login', [AuthController::class, 'index'])->name("login");
+Route::post('/login', [AuthController::class, 'login']);
+Route::post('/logout', [AuthController::class, 'logout']);
