@@ -12,18 +12,21 @@ class AuthController extends Controller
         return view('auth.login');
     }
 
-    function login(Request $request)
+    public function login(Request $request)
     {
-        $userDetails = [
-            "email" => $request->email,
-            "password" => $request->password
-        ];
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
 
-        if (Auth::attempt($userDetails)) {
+        if (Auth::attempt($request->only('email', 'password'))) {
             $request->session()->regenerate();
             return redirect('/plants');
         }
-        return back();
+
+        return back()
+            ->withErrors(['email' => 'Invalid email or password'])
+            ->withInput($request->only('email'));
     }
 
     function logout(Request $request)

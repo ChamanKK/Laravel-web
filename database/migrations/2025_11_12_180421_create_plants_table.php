@@ -11,10 +11,8 @@ return new class extends Migration
         Schema::create('plants', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('type');
             $table->date('date_planted')->nullable();
             $table->string('watering_frequency')->nullable();
-
             $table->foreignId('category_id')->nullable()->constrained()->onDelete('set null');
 
             $table->timestamps();

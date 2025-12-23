@@ -1,32 +1,80 @@
-<x-layout title="Add new Plant">
-  <h1>Add a new Plant</h1>
+<x-layout title="Add New Plant">
 
- <form action="/plants" method="POST">
-    @csrf
+    <div class="max-w-md mx-auto bg-[#C2DEC1] rounded-xl shadow-lg p-6 mt-10">
+        <!-- Title -->
+        <h1 class="text-2xl font-bold text-center text-[#295334] mb-6">
+            Add a New Plant
+        </h1>
 
-    <div>
-        <label for="name">Plant Name:</label>
-        <input type="text" id="name" name="name" required />
+        <!-- Add Plant Form -->
+        <form action="/plants" method="POST" class="space-y-4">
+            @csrf
+
+            <!-- Plant Name -->
+            <div>
+                <label for="name" class="block text-gray-700 font-semibold mb-1">
+                    Plant Name
+                </label>
+                <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value="{{ old('name') }}"
+                    required
+                    class="w-full border border-[#16312B] rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#2d6a4f]"
+                />
+            </div>
+
+            <!-- Date Planted -->
+            <div>
+                <label for="date_planted" class="block text-gray-700 font-semibold mb-1">
+                    Date Planted
+                </label>
+                <input
+                    type="date"
+                    id="date_planted"
+                    name="date_planted"
+                    value="{{ old('date_planted') }}"
+                    class="w-full border border-[#16312B] rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#2d6a4f]"
+                />
+            </div>
+
+            <!-- Type -->
+            <div>
+                <label for="type" class="block text-gray-700 font-semibold mb-1">
+                    Type
+                </label>
+                <input
+                    type="text"
+                    id="type"
+                    name="type"
+                    value="{{ old('type') }}"
+                    required
+                    class="w-full border border-[#16312B] rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#2d6a4f]"
+                />
+            </div>
+
+            <!-- Watering Frequency -->
+            <div>
+                <label for="watering_frequency" class="block text-gray-700 font-semibold mb-1">
+                    Watering Frequency (days)
+                </label>
+                <input
+                    type="text"
+                    id="watering_frequency"
+                    name="watering_frequency"
+                    value="{{ old('watering_frequency') }}"
+                    class="w-full border border-[#16312B] rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#2d6a4f]"
+                />
+            </div>
+
+            <!-- Submit Button -->
+            <div class="text-center pt-2">
+                <button type="submit" class="bg-[#295334] text-white px-5 py-2 rounded-xl hover:bg-[#24533f] transition-colors duration-150 mt-2">
+                    Save the Plant
+                </button>
+            </div>
+        </form>
     </div>
-
-    <div>
-        <label for="date_planted">Date Planted:</label>
-        <input type="date" id="date_planted" name="date_planted" />
-    </div>
-
-    <div>
-        <label for="type">Type:</label>
-        <input type="text" id="type" name="type" required />
-    </div>
-
-    <div>
-        <label for="watering_frequency">Watering Frequency (days):</label>
-        <input type="text" id="watering_frequency" name="watering_frequency" />
-    </div>
-
-    <div>
-        <button type="submit">Save the Plant</button>
-    </div>
-</form>
 
 </x-layout>

@@ -25,4 +25,6 @@ class AppServiceProvider extends ServiceProvider
             return $user->role_id === 2;      
         });
     }
+
+
 }
