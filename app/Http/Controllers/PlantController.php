@@ -105,7 +105,9 @@ class PlantController extends Controller
         $query = $request->input('query');
 
         $plants = Plant::where('name', 'LIKE', "%{$query}%")
-            ->orWhere('type', 'LIKE', "%{$query}%")
+            ->orWhereHas('category', function($q) use ($query) {
+                $q->where('name', 'LIKE', "%{$query}%");
+            })
             ->paginate(3)
             ->appends(['query' => $query]);
 
@@ -115,6 +117,7 @@ class PlantController extends Controller
             'resultsCount' => $plants->total(),
         ]);
     }
+
 
      // Show create maintenance form
     public function createMaintenance(Plant $plant)
