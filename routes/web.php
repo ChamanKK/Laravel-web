@@ -11,7 +11,7 @@ Route::get('/plants/create', [PlantController::class, 'create'])->middleware('au
 Route::get('/plants/about', [PlantController::class, 'about']);
 Route::post('/plants', [PlantController::class, 'store'])->middleware('auth', 'can:edit');
 Route::get('/plants/search', [PlantController::class, 'search']);
-Route::get('/plants/{id}', [PlantController::class, 'show'])->middleware('auth');
+Route::get('/plants/{id}', [PlantController::class, 'show'])->middleware('auth')->name('plants.show');
 Route::get('/plants/{id}/edit', [PlantController::class, 'edit'])->middleware('auth', 'can:edit');
 Route::patch('/plants/{id}', [PlantController::class, 'update'])->middleware('auth', 'can:edit');
 Route::delete('/plants/{id}', [PlantController::class, 'destroy'])->middleware('auth', 'can:edit');

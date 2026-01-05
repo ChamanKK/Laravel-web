@@ -32,12 +32,6 @@ The database is designed using a relational model that separates data across mul
 - health status
 - notes
 
-**Users Table**
-- id
-- name
-- email
-- role_id
-
 **Plants and Categories**
 
 Plants are connected to categories through a foreign key (category_id), instead of storing the category information directly in the plants table. This means the filtering, querying, and management of categories become easier and faster, while consistency across the application is guaranteed. However, the design restricts each plant to only one category. This limitation is acceptable within the this project's scope, but a more complex system may need to use a many-to-many relationship s allows multiple categories for each plant (e.g., indoor and low-maintenance).
@@ -94,24 +88,6 @@ Furthermore, Tailwind’s responsive classes made it possible for the interface 
     Edit
 </button>
 ```
-
-Implement a search facility. Done
-Implement pagination.
-Provide user input validation. Done.
-More ambitious use of CSS. 
-Demonstrate a deeper understanding of key Laravel features e.g. templating and components.
-
-
-Additional Functionality
-- Authentication and authorisation using Laravel.
-- Working with multiple database tables and using Eloquent relationships.
-Use of libraries and frameworks
-- CSS Frameworks e.g. Tailwind.
-- Use of JavaScript frameworks e.g. Vue or React.
-Other advanced features
-- Responsive design.
-- Testing.
-
 
 ### Resources
 [Tailwind](https://tailwindcss.com/docs/installation/framework-guides/laravel/vite)

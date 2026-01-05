@@ -19,6 +19,22 @@
                 @error('name') <p class="text-red-600 text-sm mt-1">{{ $message }}</p> @enderror
             </div>
 
+            <!-- Category -->
+            <div>
+                <label for="category_id" class="block text-gray-700 font-semibold mb-1">Category:</label>
+                <select id="category_id" name="category_id"
+                        class="w-full border border-[#16312B] rounded px-3 py-2 bg-[#C2DEC1] focus:outline-none focus:ring-2 focus:ring-[#2d6a4f]">
+                    <option value="">Select a category</option>
+                    @foreach($categories as $category)
+                        <option value="{{ $category->id }}"
+                            {{ old('category_id', $plant->category_id) == $category->id ? 'selected' : '' }}>
+                            {{ $category->name }}
+                        </option>
+                    @endforeach
+                </select>
+                @error('category_id') <p class="text-red-600 text-sm mt-1">{{ $message }}</p> @enderror
+            </div>
+
             <!-- Date Planted -->
             <div>
                 <label for="date_planted" class="block text-gray-700 font-semibold mb-1">Date Planted:</label>
@@ -26,15 +42,6 @@
                        value="{{ old('date_planted', $plant->date_planted) }}"
                        class="w-full border border-[#16312B] rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#2d6a4f]">
                 @error('date_planted') <p class="text-red-600 text-sm mt-1">{{ $message }}</p> @enderror
-            </div>
-
-            <!-- Type -->
-            <div>
-                <label for="type" class="block text-gray-700 font-semibold mb-1">Type:</label>
-                <input type="text" id="type" name="type"
-                       value="{{ old('type', $plant->type) }}"
-                       class="w-full border border-[#16312B] rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#2d6a4f]">
-                @error('type') <p class="text-red-600 text-sm mt-1">{{ $message }}</p> @enderror
             </div>
 
             <!-- Watering Frequency -->

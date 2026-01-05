@@ -39,7 +39,13 @@
                                 {{ $plant->name }}
                             </a>
                         </h2>
-                        <p class="text-gray-700 leading-snug text-sm mt-1"> {{ $plant->category->name }}</p>
+                        <p class="text-gray-700 leading-snug text-sm mt-1">
+                            @if($plant->category)
+                                {{ $plant->category->name }}
+                            @else
+                                No category
+                            @endif
+                        </p>
                     </div>
                 @endforeach
             </div>

@@ -18,7 +18,9 @@ class PlantController extends Controller
 
     function create()
     {
-        return view('plants.create');    
+        $categories = Category::all();
+
+        return view('plants.create', compact('categories'));   
     }
 
     public function about()
@@ -34,14 +36,14 @@ class PlantController extends Controller
     {
         $request->validate([
             'name' => 'required|min:2|max:50',
-            'type' => 'required|min:3|max:50',
+            'category_id' => 'required|exists:categories,id',
             'date_planted' => 'required|date',
             'watering_frequency' => 'required|min:3|max:50',
         ]);
 
         $plant = new Plant();
         $plant->name = $request->name;
-        $plant->type = $request->type;
+        $plant->category_id = $request->category_id;
         $plant->date_planted = $request->date_planted;
         $plant->watering_frequency = $request->watering_frequency;
         $plant->save();
@@ -68,7 +70,6 @@ class PlantController extends Controller
         // Validate input
         $request->validate([
             'name' => 'required|min:2|max:50',
-            'type' => 'required|min:3|max:50',
             'date_planted' => 'required|date',
             'watering_frequency' => 'required|min:3|max:50',
             'category_id' => 'nullable|exists:categories,id', 
@@ -81,12 +82,11 @@ class PlantController extends Controller
         $plant->update([
             'name' => $request->name,
             'date_planted' => $request->date_planted,
-            'type' => $request->type,
             'watering_frequency' => $request->watering_frequency,
             'category_id' => $request->category_id, 
         ]);
 
-        return redirect('/plants')
+        return redirect()->route('plants.show', $plant->id)
             ->with('success', 'Information updated successfully');
     }
 

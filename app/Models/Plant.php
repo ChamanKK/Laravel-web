@@ -9,7 +9,6 @@ class Plant extends Model
     protected $fillable = [
         'name',
         'date_planted',
-        'type',
         'watering_frequency',
         'category_id',
     ];
