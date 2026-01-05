@@ -79,9 +79,9 @@ However, the current implementation has limitations, it provides only basic role
 
 
 ## Tailwind
-Tailwind CSS was applied to the user interface for a responsive and visually seamless interface without the necessity of writing extensive custom CSS. By using Tailwind’s utility-first method, the styles can be applied right at the HTML elements with user-friendly class names, which eliminates the need of separate CSS files and enables quick prototyping. For example, all the application elements like container, form, button, and table were styled with Tailwind classes in a way that provided uniform padding, margins, colors, borders, and hover effects.
+Tailwind CSS was applied to the user interface for a responsive and visually seamless interface without the necessity of writing extensive custom CSS. By using Tailwind’s utility-first method, the styles can be applied right at the HTML elements with user-friendly class names, which avoiding the need of separate CSS files and making prototyping quick. For example, all the application elements like container, form, button, and table were styled with Tailwind classes in a way that provided uniform padding, margins, colors, borders, and hover effects.
 
-Furthermore, Tailwind’s responsive classes made it possible for the interface to change its size smoothly depending on the screen, thus making it usable for both desktop and mobile users. The user experience was improved through the application of custom color palettes and rounded corners, which gave the interface a clean and modern look.
+Furthermore, Tailwind’s responsive classes made it possible for the interface to change its size smoothly depending on the screen, making it usable for both desktop and mobile users. The user experience was improved through the application of custom color palettes and rounded corners, which gave the interface a clean and modern look.
 
 ```
 <button class="bg-green-600 text-white px-6 py-2 rounded-full hover:bg-green-700 transition-colors duration-150">
